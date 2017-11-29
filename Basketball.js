@@ -61,10 +61,16 @@ class Basketball extends Component {
       scored: null,
       score: 0,
     };
+
+    this.is_testing = props.testing;
   }
 
   componentDidMount() {
-    this.interval = setInterval(this.update.bind(this), 1000 / 60);
+    if (this.is_testing) {
+      this.update();
+    } else {
+      this.interval = setInterval(this.update.bind(this), 1000 / 60);
+    }
   }
 
   componentWillUnmount() {
